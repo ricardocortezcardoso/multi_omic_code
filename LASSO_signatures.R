@@ -46,7 +46,7 @@ generate_MOFAsignatures <- function(Rdata_path, output_directory, MOFA_factors, 
   
   # 2) Run LASSO models
   Train_set <- temp_data %>%
-    select(results_corr1$feature, MOFA_factor, ID) %>%
+    select(results_corr$feature, MOFA_factor, ID) %>%
     mutate(MOFA_factor = MOFA_factor / sd(MOFA_factor)) %>%
     na.omit()  # Remove rows with NAs
   
