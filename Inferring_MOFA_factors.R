@@ -40,7 +40,7 @@ infer_MOFA_factors <- function(path_to_LASSO_coefficients, path_to_Omic_file, da
   eval(parse(text = paste0("temp = data.frame(ID = colnames(data_matrix), Factor", j, " = colSums(data_matrix))")))
   signature_file <- left_join(signature_file, temp)
   
-  # calculate variance explain of Omic file explained by MOFA factor
+  # calculate variance across samples in Omic file explained by MOFA factor
   Omic_file %>% dplyr::select(signature_file$ID)->Omic_file
   all(colnames(Omic_file)==signature_file$ID)#TRUE
   rownames(signature_file)=signature_file$ID
