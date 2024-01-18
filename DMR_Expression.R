@@ -64,7 +64,7 @@ calculate_DMR <- function(DNAm_file, RNA_file, samplesheet_file, MOFA_factor, ou
   
   ###applying dmrff
   dmrs <- dmrff(estimate=stats$estimate.MOFA_factor,
-                se=stats$se.Factor6,
+                se=stats$se.MOFA_factor,
                 p.value=stats$p.value.MOFA_factor,
                 methylation=mval,
                 chr=stats$chr,
