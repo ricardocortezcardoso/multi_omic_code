@@ -17,10 +17,10 @@ library(dplyr)#v1.1.3
 pathway_analysis<-function(Correlation_file, output_folder, Outcome){
   
   #1) Upload GO terms to Hallmarks curate from Chen et al., 2021 (https://doi.org/10.1186/s12859-021-04105-8)
-  GO_Hallmark<-read_csv("/data/geniluc/work/cortezr/Final_Analysis_RCC/Scripts/clean_scripts/Data/Hallmarks_Cancer_GO.csv")
+  GO_Hallmark<-read_csv("Data/Hallmarks_Cancer_GO.csv")
   
   #2) GO terms to Pathways
-  GO_Path<-read_csv("/data/geniluc/work/cortezr/Final_Analysis_RCC/Scripts/clean_scripts/Data/GOTerm_dictionary.csv")
+  GO_Path<-read_csv("Data/GOTerm_dictionary.csv")
   
   #3) Upload files with correlations between Factor and Gene expression as in ./Data/Example_Correlation_Factor3_RNA.csv
   results_corr<-as.data.frame(read_csv(Correlation_file))
@@ -34,7 +34,7 @@ pathway_analysis<-function(Correlation_file, output_folder, Outcome){
   #5) Run fgsea
   #5.1) Open annotation file (https://data.broadinstitute.org/gsea-msigdb/msigdb/release/2022.1.Hs/msigdb.v2022.1.Hs.symbols.gmt)
   
-  myGO = fgsea::gmtPathways("/data/geniluc/work/cortezr/Final_Analysis_RCC/Scripts/clean_scripts/Data/msigdb.v2022.1.Hs.symbols.gmt")
+  myGO = fgsea::gmtPathways("Data/msigdb.v2022.1.Hs.symbols.gmt")
   
   #5.2) Run fgsea 
   fgRes <- fgsea::fgsea(pathways = myGO,
